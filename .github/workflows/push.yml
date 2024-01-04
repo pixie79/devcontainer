@@ -1,6 +1,10 @@
 name: Build and push images
 
-on: 
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
   pull_request:
     paths:
       - src/image/**
