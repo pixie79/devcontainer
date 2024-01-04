@@ -1,0 +1,155 @@
+{
+    "name": "Universal",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "remoteUser": "codespace",
+    "features": {
+        "ghcr.io/devcontainers-contrib/features/gh-release:1": {
+            "version": "v0.48.1",
+            "binaryNames": "trivy",
+            "repo": "aquasecurity/trivy",
+            "assetRegex": "trivy_.*_Linux-64bit.tar.gz"
+        },
+        "ghcr.io/devcontainers-contrib/features/black:2.0.9": {},
+        "ghcr.io/devcontainers-contrib/features/isort:2": {},
+        "ghcr.io/devcontainers/features/azure-cli:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/aws-cli:1": {},
+        "ghcr.io/devcontainers/features/terraform:1": {
+            "tflint": "0.49.0",
+            "terragrunt": "0.54.5",
+            "installTerraformDocs": "true"
+        },
+        "ghcr.io/devcontainers-contrib/features/checkov:1": {},
+        "ghcr.io/devcontainers-contrib/features/coverage-py:2": {},
+        "ghcr.io/devcontainers-contrib/features/argo-cd:1": {},
+        "ghcr.io/devcontainers-contrib/features/dbt-coverage:1": {},
+        "ghcr.io/devcontainers-contrib/features/jfrog-cli:1": {},
+        "ghcr.io/devcontainers-contrib/features/mypy:2": {},
+        "ghcr.io/devcontainers-contrib/features/poetry:2": {},
+        "ghcr.io/devcontainers-contrib/features/pre-commit:2": {},
+        "ghcr.io/devcontainers-contrib/features/prettier:1": {},
+        "ghcr.io/devcontainers-contrib/features/pylint:2": {},
+        "ghcr.io/devcontainers-contrib/features/sqlfluff:1": {},
+        "ghcr.io/devcontainers-contrib/features/sqlfmt:1": {},
+        "ghcr.io/devcontainers/features/desktop-lite:1": {},
+        "./local-features/dbt-core": {
+            "version": "1.7.4",
+            "plugins": "dbt-trino==1.7.0 dbt-athena-community==1.7.0"
+        },
+        "./local-features/rpk": {}
+    },
+    "forwardPorts": [6080],
+    "portsAttributes": {
+      "6080": {
+        "label": "desktop"
+      }
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "dbt.dbtPythonPathOverride": "/usr/local/py-utils/bin",
+                "dbt.sqlFmtPath": "/usr/local/py-utils/bin",
+                "dbt.enableNewLineagePanel": true,
+                "keyboard.layout": "com.apple.keylayout.British",
+                "git.autofetch": true,
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|:|^)\\s*($TAGS)|^//\\s*\\[x\\]|^//\\s*\\[ \\])",
+                "todo-tree.regex.enableMultiLine": true,
+                "todo-tree.general.tags": [
+                    "TODO",
+                    "[x]",
+                    "[ ]",
+                    "SEC",
+                    "FIX",
+                    "tfsec",
+                    "BUG",
+                    "HACK",
+                    "XXX",
+                    "NOTE"
+                ],
+                "todo-tree.highlights.customHighlight": {
+                    "[x]":{
+                        "icon": "issue-closed",
+                        "foreground": "#64dd17",
+                        "background":"#008800"
+                    },
+                    "[ ]":{
+                        "icon": "issue-draft",
+                        "foreground": "#f44336",
+                        "background": "#592c2c"
+                    },
+                    "SEC": {
+                        "icon": "flame",
+                        "foreground": "#f44444",
+                        "background": "#5544c2"
+                    },
+                    "TFSEC": {
+                        "icon": "flame",
+                        "foreground": "#f44444",
+                        "background": "#5544c2"
+                    },
+                    "FIX": {
+                        "icon": "flame",
+                        "foreground": "#f4b644",
+                        "background": "#c29a44"
+                    },
+                    "TODO": {
+                        "icon": "check",
+                        "foreground": "#44f4e5",
+                        "background": "#4457c2"
+                    },
+                    "BUG": {
+                        "icon": "bug"
+                    },
+                    "HACK": {
+                        "icon": "tools"
+                    },
+                    "XXX": {
+                        "icon": "x"
+                    },
+                    "NOTE": {
+                        "icon": "note",
+                        "foreground": "#53f444",
+                        "background": "#022c1c"
+                    }
+                }
+            },
+            "extensions": [
+                "AmazonWebServices.aws-toolkit-vscode",
+                "bierner.github-markdown-preview",
+                "boto3typed.boto3-ide",
+                "davidanson.vscode-markdownlint",
+                "donjayamanne.python-environment-manager",
+                "dorzey.vscode-sqlfluff",
+                "eamodio.gitlens",
+                "editorconfig.editorconfig-vscode",
+                "esbenp.prettier-vscode",
+                "GitHub.codespaces",
+                "github.copilot",
+                "github.copilot-chat",
+                "github.vscode-github-actions",
+                "golang.go",
+                "gruntfuggly.todo-tree",
+                "HashiCorp.terraform",
+                "innoverio.vscode-dbt-power-user",
+                "mark-tucker.aws-cli-configure",
+                "ms-azuretools.vscode-azureterraform",
+                "ms-azuretools.vscode-docker",
+                "ms-dotnettools.dotnet-interactive-vscode",
+                "ms-python.flake8",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-toolsai.datawrangler",
+                "mtxr.sqltools",
+                "njpwerner.autodocstring",
+                "RandomFractalsInc.vscode-data-preview",
+                "RandomFractalsInc.duckdb-sql-tools",
+                "RandomFractalsInc.tabular-data-viewer",
+                "wholroyd.jinja"
+            ]
+        }
+    }
+}

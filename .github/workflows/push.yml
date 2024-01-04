@@ -1,0 +1,52 @@
+name: Build and push images
+
+on: 
+  pull_request:
+    paths:
+      - src/image/**
+      - .github/devcontainer/smoke-devcontainer.yaml
+      - .github/actions/**
+      - build/**
+
+jobs:
+  build-and-push:
+    name: Build and push images
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+    - name: Free more space
+      id: free_space 
+      run: |
+        set -e
+        # Ensure enough space is available for build
+        sudo apt-get autoremove -y
+        sudo apt-get clean -y
+
+    - name: Checkout
+      id: checkout
+      uses: actions/checkout@v4
+  
+    - name: Log in to the Container registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+          
+    - name: Build and push
+      id: build_and_push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/devcontainer:latest
+        PLATFORMS: "linux/amd64"
+      run: |
+        set -e
+
+        # Build and push images
+        yarn install
+        npm install -g @devcontainers/cli
+        pwd
+        ls -la
+        devcontainer build --workspace-folder src/image --push true --image-name $IMAGE_NAME --platform $PLATFORMS

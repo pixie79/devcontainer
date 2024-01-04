@@ -1,0 +1,30 @@
+{
+    "id": "dbt-core",
+    "version": "1.7.4",
+    "name": "dbt-core (via pipx)",
+    "documentationURL": "http://github.com/devcontainers-contrib/features/tree/main/src/dbt",
+    "description": "dbt is a command line tool that enables data analysts and engineers to transform data in their warehouse more effectively.",
+    "options": {
+        "version": {
+            "default": "1.7.4",
+            "description": "Select the version to install.",
+            "proposals": [
+                "1.7.4"
+            ],
+            "type": "string"
+        },
+        "plugins": {
+            "default": "",
+            "description": "A space delimitered list of dbt plugins (will be injected into the dbt pipx env). See proposals for examples.",
+            "proposals": [
+                "dbt-trino==1.7.0",
+                "dbt-athena-community==1.7.0"
+            ],
+            "type": "string"
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers-contrib/features/pipx-package",
+        "ghcr.io/devcontainers/features/python"
+    ]
+}
