@@ -1,6 +1,6 @@
 name: Smoke test "devcontainer" build
 
-on: 
+on:
   workflow_dispatch:
   push:
     branches:

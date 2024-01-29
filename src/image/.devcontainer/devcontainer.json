@@ -40,10 +40,9 @@
                 "sqlfmt==0.0.3",
                 "sqlfluff==2.3.5",
                 "ruff==0.1.14",
-                "azure-cli==2.56.0",
-
+                "azure-cli==2.56.0"
             ]
-        },        
+        },
         "./local-features/rpk": {}
     },
     "forwardPorts": [6080],

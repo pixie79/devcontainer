@@ -18,7 +18,7 @@ clean_download() {
     _apt_get_install() {
         tempdir=$1
 
-        # copy current state of apt list - in order to revert back later (minimize contianer layer size)
+        # copy current state of apt list - in order to revert back later (minimize container layer size)
         cp -p -R /var/lib/apt/lists $tempdir
         apt-get update -y
         apt-get -y install --no-install-recommends wget ca-certificates
@@ -37,7 +37,7 @@ clean_download() {
 
     _apk_install() {
         tempdir=$1
-        # copy current state of apk cache - in order to revert back later (minimize contianer layer size)
+        # copy current state of apk cache - in order to revert back later (minimize container layer size)
         cp -p -R /var/cache/apk $tempdir
 
         apk add --no-cache  wget
@@ -58,7 +58,7 @@ clean_download() {
         downloader=""
     fi
 
-    # in case none of them is installed, install wget temporarly
+    # in case none of them is installed, install wget temporarily
     if [ -z $downloader ] ; then
         if [ -x "/usr/bin/apt-get" ] ; then
             _apt_get_install $tempdir
@@ -95,7 +95,7 @@ clean_download() {
 
 
 ensure_nanolayer() {
-    # Ensure existance of the nanolayer cli program
+    # Ensure existence of the nanolayer cli program
     local variable_name=$1
 
     local required_version=$2
@@ -128,7 +128,7 @@ ensure_nanolayer() {
 
     fi
 
-    # If not previuse installation found, download it temporarly and delete at the end of the script
+    # If not previuse installation found, download it temporarily and delete at the end of the script
     if [ -z "${__nanolayer_location}" ]; then
 
         if [ "$(uname -sm)" = 'Linux x86_64' ] || [ "$(uname -sm)" = "Linux aarch64" ]; then
