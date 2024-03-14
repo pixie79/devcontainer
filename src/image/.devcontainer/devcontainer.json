@@ -1,61 +1,123 @@
 {
-    "name": "Universal",
+    "name": "Custom",
     "build": {
-        "dockerfile": "Dockerfile"
+        "dockerfile": "./Dockerfile",
+        "context": "."
     },
+
     "remoteUser": "codespace",
+    "containerUser": "codespace",
     "features": {
-        "ghcr.io/devcontainers-contrib/features/gh-release:1": {
-            "version": "v0.48.3",
-            "binaryNames": "trivy",
-            "repo": "aquasecurity/trivy",
-            "assetRegex": "trivy_.*_Linux-64bit.tar.gz"
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "username": "codespace",
+            "userUid": "1000",
+            "userGid": "1000"
         },
-        "ghcr.io/devcontainers/features/aws-cli:1": {},
-        "ghcr.io/devcontainers/features/terraform:1": {
-            "tflint": "latest",
-            "terragrunt": "latest",
-            "installTerraformDocs": "true"
+        "ghcr.io/devcontainers/features/dotnet:2": {
+            "version": "8.0",
+            "dotnetRuntimeVersions": "7.0",
+            "aspNetCoreRuntimeVersions": "7.0"
         },
+        "ghcr.io/devcontainers/features/hugo:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "20",
+            "additionalVersions": "18"
+        },
+        "./local-features/nvs": "latest",
+        "ghcr.io/devcontainers/features/java:1": {
+            "version": "21",
+            "additionalVersions": "17",
+            "installGradle": "true",
+            "installMaven": "true"
+        },
+        "ghcr.io/devcontainers/features/sshd:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/git:1": {
+            "version": "latest",
+            "ppa": "false"
+        },
+        "ghcr.io/devcontainers/features/git-lfs:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/github-cli:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/go:1": {
+            "version": "latest"
+        },
+        "./local-features/setup-user": "latest",
         "ghcr.io/devcontainers-contrib/features/argo-cd:1": {},
         "ghcr.io/devcontainers-contrib/features/jfrog-cli:1": {},
-        "ghcr.io/devcontainers/features/desktop-lite:1": {},
-        "ghcr.io/devcontainers/features/node:1": {},
         "ghcr.io/devcontainers-contrib/features/cz-cli:1": {},
         "ghcr.io/devcontainers-contrib/features/go-task:1": {},
-        "ghcr.io/eitsupi/devcontainer-features/duckdb-cli:1":{},
-        "ghcr.io/devcontainers-contrib/features/pipx-package:1": {
-            "injections":
-            [
-                "python-semantic-release",
-                "codespell",
-                "pyright",
-                "dbt-athena-community==1.7.1",
-                "dbt-trino==1.7.1",
-                "dbt-coverage==0.3.5",
-                "coverage==7.4.0",
-                "checkov==3.1.70",
-                "poetry==1.7.1",
-                "pre-commit==3.6.0",
-                "sqlfmt==0.0.3",
-                "sqlfluff==2.3.5",
-                "ruff==0.1.14",
-                "azure-cli==2.56.0"
-            ]
+        "ghcr.io/eitsupi/devcontainer-features/duckdb-cli:1": {},
+        "ghcr.io/devcontainers/features/aws-cli:1": {},
+        "ghcr.io/astronomer/devcontainer-features/astro-cli:1": {
+            "version": "v1.23.0"
         },
-        "./local-features/rpk": {}
+        "ghcr.io/trunk-io/devcontainer-feature/trunk": "latest",
+        "./local-features/rpk": {},
+        "./local-features/tfupdate": {}
     },
-    "forwardPorts": [6080],
-    "portsAttributes": {
-      "6080": {
-        "label": "desktop"
-      }
-    },
+    "overrideFeatureInstallOrder": [
+        "ghcr.io/devcontainers/features/common-utils",
+        "ghcr.io/devcontainers/features/git",
+        "ghcr.io/devcontainers/features/dotnet",
+        "ghcr.io/devcontainers/features/hugo",
+        "ghcr.io/devcontainers/features/node",
+        "./local-features/nvs",
+        "ghcr.io/devcontainers/features/java",
+        "ghcr.io/devcontainers/features/sshd",
+        "ghcr.io/devcontainers/features/git-lfs",
+        "ghcr.io/devcontainers/features/github-cli",
+        "ghcr.io/devcontainers/features/docker-in-docker",
+        "ghcr.io/devcontainers/features/kubectl-helm-minikube",
+        "ghcr.io/devcontainers/features/go",
+        "ghcr.io/devcontainers/features/aws-cli",
+        "./local-features/setup-user"
+    ],
     "customizations": {
         "vscode": {
             "settings": {
-                "dbt.dbtPythonPathOverride": "/usr/local/py-utils/bin",
-                "dbt.sqlFmtPath": "/usr/local/py-utils/bin",
+                "go.toolsManagement.checkForUpdates": "local",
+                "go.useLanguageServer": true,
+                "go.gopath": "/go",
+                "python.defaultInterpreterPath": "/home/codespace/.python/current/bin/python3",
+                "jupyter.kernels.filter": [
+                    {
+                        "path": "/opt/conda/bin/python",
+                        "type": "pythonEnvironment"
+                    },
+                    {
+                        "path": "/usr/local/python/current/bin/python3",
+                        "type": "pythonEnvironment"
+                    },
+                    {
+                        "path": "/usr/local/python/current/bin/python",
+                        "type": "pythonEnvironment"
+                    },
+                    {
+                        "path": "/usr/bin/python3.11",
+                        "type": "pythonEnvironment"
+                    },
+                    {
+                        "path": "/bin/python3",
+                        "type": "pythonEnvironment"
+                    }
+                ],
+                "lldb.executable": "/usr/bin/lldb",
+                "files.autoSaveDelay": 5000,
+                "dbt.dbtPythonPathOverride": "/usr/local/bin",
+                "dbt.sqlFmtPath": ".trunk/tools",
                 "dbt.enableNewLineagePanel": true,
                 "keyboard.layout": "com.apple.keylayout.British",
                 "git.autofetch": true,
@@ -72,15 +134,16 @@
                     "BUG",
                     "HACK",
                     "XXX",
-                    "NOTE"
+                    "NOTE",
+                    "trunk-ignore"
                 ],
                 "todo-tree.highlights.customHighlight": {
-                    "[x]":{
+                    "[x]": {
                         "icon": "issue-closed",
                         "foreground": "#64dd17",
-                        "background":"#008800"
+                        "background": "#008800"
                     },
-                    "[ ]":{
+                    "[ ]": {
                         "icon": "issue-draft",
                         "foreground": "#f44336",
                         "background": "#592c2c"
@@ -90,7 +153,12 @@
                         "foreground": "#f44444",
                         "background": "#5544c2"
                     },
-                    "TFSEC": {
+                    "tfsec": {
+                        "icon": "flame",
+                        "foreground": "#f44444",
+                        "background": "#5544c2"
+                    },
+                    "trunk-ignore": {
                         "icon": "flame",
                         "foreground": "#f44444",
                         "background": "#5544c2"
@@ -135,6 +203,7 @@
                 "github.copilot",
                 "github.copilot-chat",
                 "github.vscode-github-actions",
+                "GitHub.vscode-pull-request-github",
                 "golang.go",
                 "gruntfuggly.todo-tree",
                 "HashiCorp.terraform",
@@ -151,6 +220,7 @@
                 "RandomFractalsInc.vscode-data-preview",
                 "RandomFractalsInc.duckdb-sql-tools",
                 "RandomFractalsInc.tabular-data-viewer",
+                "trunk.io",
                 "wholroyd.jinja"
             ]
         }
