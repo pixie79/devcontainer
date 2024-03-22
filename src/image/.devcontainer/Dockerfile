@@ -13,6 +13,7 @@ RUN apt-get update -yqq && \
     curl \
     expect \
     git \
+    gcc \
     make \
     wget \
     unzip \
@@ -31,6 +32,7 @@ RUN apt-get update -yqq && \
     python3.11 \
     python3.11-venv \
     python3.11-distutils \
+    python3.11-dev \
     python3-pip \
     python-is-python3 && \
     apt-get clean && \
