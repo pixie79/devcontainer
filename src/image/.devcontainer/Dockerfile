@@ -1,6 +1,6 @@
 # [Choice] Ubuntu version (use jammy on local arm64/Apple Silicon): jammy
 ARG VARIANT="jammy"
-FROM buildpack-deps:${VARIANT}-curl
+FROM --platform=linux/arm64 buildpack-deps:${VARIANT}-curl
 
 LABEL dev.containers.features="common"
 
