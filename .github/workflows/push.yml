@@ -39,6 +39,10 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: fix docker
+      run: |
+        docker buildx create --use
+        
     - name: Build and push
       id: build_and_push
       env:
