@@ -45,6 +45,9 @@
         "ghcr.io/devcontainers/features/github-cli:1": {
             "version": "latest"
         },
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "version": "latest"
+        },
         "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
             "version": "latest"
         },
@@ -76,6 +79,7 @@
         "ghcr.io/devcontainers/features/sshd",
         "ghcr.io/devcontainers/features/git-lfs",
         "ghcr.io/devcontainers/features/github-cli",
+        "ghcr.io/devcontainers/features/docker-in-docker",
         "ghcr.io/devcontainers/features/kubectl-helm-minikube",
         "ghcr.io/devcontainers/features/go",
         "ghcr.io/devcontainers/features/aws-cli",
@@ -107,6 +111,10 @@
                     },
                     {
                         "path": "/bin/python3",
+                        "type": "pythonEnvironment"
+                    },
+                    {
+                        "path": "/home/codespace/bin/python3",
                         "type": "pythonEnvironment"
                     }
                 ],
