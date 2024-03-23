@@ -65,8 +65,7 @@
         "ghcr.io/astronomer/devcontainer-features/astro-cli:1": {
             "version": "v1.23.0"
         },
-        "ghcr.io/trunk-io/devcontainer-feature/trunk": "latest",
-        "./local-features/tfupdate": {}
+        "ghcr.io/trunk-io/devcontainer-feature/trunk": "latest"
     },
     "overrideFeatureInstallOrder": [
         "ghcr.io/devcontainers/features/common-utils",

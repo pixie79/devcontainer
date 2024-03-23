@@ -40,3 +40,4 @@ if [[ -f ${PWD}/pyproject.toml ]]; then
 fi
 
 echo "please restart your ZSH Shell"
+echo "install rpk, tfupdate"
