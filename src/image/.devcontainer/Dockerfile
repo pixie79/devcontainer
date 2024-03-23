@@ -1,5 +1,5 @@
 # [Choice] Ubuntu version (use jammy on local arm64/Apple Silicon): jammy
-ARG VARIANT="jammy"
+ARG VARIANT="moby"
 FROM buildpack-deps:${VARIANT}-curl
 
 LABEL dev.containers.features="common"
