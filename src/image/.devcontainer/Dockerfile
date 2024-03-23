@@ -57,4 +57,8 @@ RUN echo "$(date +%y-%m-%d)" > /usr/local/share/devcontainer_version
 # Set the system language to GB English
 ENV LANG en_GB.UTF-8
 
+RUN ENABLE_NONROOT_DOCKER=false \
+  /bin/bash \
+  -c "$(curl -fsSL https://raw.githubusercontent.com/devcontainers/features/main/src/docker-outside-of-docker/install.sh)"
+
 ENTRYPOINT ["/usr/bin/zsh"]
