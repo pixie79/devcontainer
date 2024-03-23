@@ -1,5 +1,4 @@
-# [Choice] Ubuntu version (use jammy on local arm64/Apple Silicon): jammy
-ARG VARIANT="moby"
+ARG VARIANT="bookworm"
 FROM buildpack-deps:${VARIANT}-curl
 
 LABEL dev.containers.features="common"
@@ -23,7 +22,6 @@ RUN apt-get update -yqq && \
     locales \
     zsh \
     libarchive-tools && \  
-    add-apt-repository ppa:deadsnakes/ppa && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
