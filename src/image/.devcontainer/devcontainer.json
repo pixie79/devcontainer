@@ -57,7 +57,6 @@
         },
         "./local-features/setup-user": "latest",
         "ghcr.io/devcontainers-contrib/features/argo-cd:1": {},
-        "ghcr.io/devcontainers-contrib/features/jfrog-cli:1": {},
         "ghcr.io/eitsupi/devcontainer-features/duckdb-cli:1": {},
         "ghcr.io/devcontainers/features/aws-cli:1": {},
         "ghcr.io/astronomer/devcontainer-features/astro-cli:1": {
