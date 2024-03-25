@@ -84,6 +84,7 @@
     "customizations": {
         "vscode": {
             "settings": {
+                "extensions.verifySignature": false,
                 "go.toolsManagement.checkForUpdates": "local",
                 "go.useLanguageServer": true,
                 "go.gopath": "/go",
