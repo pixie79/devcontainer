@@ -50,6 +50,10 @@ COPY zprofile /home/codespace/.zprofile
 RUN chmod +x /usr/local/bin/setup-devcontainer.sh /usr/local/bin/update-trunk-simlinks.sh
 RUN echo "$(date +%y-%m-%d)" > /usr/local/share/devcontainer_version
 
+RUN sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d
+RUN curl -LO https://github.com/redpanda-data/redpanda/releases/latest/download/rpk-linux-`uname -m`.zip \
+    unzip rpk-linux-`uname -m`.zip
+
 # Set the system language to GB English
 ENV LANG en_GB.UTF-8
 
