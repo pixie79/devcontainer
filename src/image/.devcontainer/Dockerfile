@@ -37,9 +37,7 @@ RUN apt-get update -yqq && \
     rm -rf /var/lib/apt/lists/*
 
 # Set the locale to en_GB.UTF-8
-COPY locale.gen /etc/
 RUN localedef -i en_GB -c -f UTF-8 -A /usr/share/locale/locale.alias en_GB.UTF-8
-RUN locale-gen
 ENV LANG en_GB.UTF-8
 
 COPY requirements.txt /home/codespace/

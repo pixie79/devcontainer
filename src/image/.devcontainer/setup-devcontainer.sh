@@ -3,10 +3,13 @@
 set -e
 unset LC_CTYPE
 
+sudo sed -i 's/# en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/g' /etc/locale.gen
+sudo locale-gen
+
 echo "PATH=${PWD}/.trunk/tools/:${HOME}/.local/bin:/home/codespaces/venv/bin:$PATH" >>~/.zshrc
 echo "WORKSPACE=${PWD}" >>~/.zshrc
 
-if [[ -d /home/codespace/requirements.txt ]]; then
+if [[ -f /home/codespace/requirements.txt ]]; then
     python3 -m venv /home/codespace/venv
     source /home/codespace/venv/bin/activate
     python3.11 -m pip --disable-pip-version-check --no-cache-dir install -r /home/codespace/requirements.txt
