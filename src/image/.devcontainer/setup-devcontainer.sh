@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 ## This script is intended to be run inside a devcontainer within a checked out trunk repo
 set -e
+unset LC_CTYPE
 
 echo "PATH=${PWD}/.trunk/tools/:${HOME}/.local/bin:/home/codespaces/venv/bin:$PATH" >>~/.zshrc
 echo "WORKSPACE=${PWD}" >>~/.zshrc
 
-
-python3 -m venv /home/codespace/venv
-source /home/codespace/venv/bin/activate
-python3.11 -m pip --disable-pip-version-check --no-cache-dir install -r /home/codespace/requirements.txt
+if [[ -d /home/codespace/requirements.txt ]]; then
+    python3 -m venv /home/codespace/venv
+    source /home/codespace/venv/bin/activate
+    python3.11 -m pip --disable-pip-version-check --no-cache-dir install -r /home/codespace/requirements.txt
+fi
 
 if [[ -d ${PWD}/.env ]]; then
     source .env
