@@ -6,7 +6,7 @@ unset LC_CTYPE
 sudo sed -i 's/# en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/g' /etc/locale.gen
 sudo locale-gen
 
-echo "PATH=${PWD}/.trunk/tools/:${HOME}/.local/bin:/home/codespaces/venv/bin:$PATH" >>~/.zshrc
+echo "PATH=${PWD}/.trunk/tools/:${HOME}/.local/bin:/home/codespace/venv/bin:$PATH" >>~/.zshrc
 echo "WORKSPACE=${PWD}" >>~/.zshrc
 
 if [[ -f /home/codespace/requirements.txt ]]; then
