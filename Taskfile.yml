@@ -1,7 +1,20 @@
 version: "3"
 
+dotenv: [".env", "{{.ENV}}/.env.", "{{.HOME}}/.env"]
 
 tasks:
+    docker_login:
+        preconditions:
+            - test {{.GITHUB_TOKEN}}
+            - test {{.GITHUB_USERNAME}}
+        cmds:
+            - echo "{{.GITHUB_TOKEN}}" | docker login ghcr.io -u {{.GITHUB_USERNAME}}
+              --password-stdin
+
+    docker_pull:
+        cmds:
+            - docker pull ghcr.io/pixie79/devcontainer:latest
+
     trivy:
         cmds:
             - trivy fs --scanners vuln,secret,config -f json terraform/
