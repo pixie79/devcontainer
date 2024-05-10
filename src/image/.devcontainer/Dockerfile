@@ -48,6 +48,8 @@ COPY zprofile /home/codespace/.zprofile
 
 
 RUN chmod +x /usr/local/bin/setup-devcontainer.sh /usr/local/bin/update-trunk-simlinks.sh
+
+# trunk-ignore(hadolint/SC2005)
 RUN echo "$(date +%y-%m-%d)" > /usr/local/share/devcontainer_version && \
     mkdir -p  /home/codespace/.local/bin
 
