@@ -222,7 +222,8 @@
                 "RandomFractalsInc.duckdb-sql-tools",
                 "RandomFractalsInc.tabular-data-viewer",
                 "trunk.io",
-                "wholroyd.jinja"
+                "wholroyd.jinja",
+                "tomaszbartoszewski.avro-tools"
             ]
         }
     }
