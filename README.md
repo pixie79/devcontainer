@@ -46,7 +46,8 @@ Replace the items in '<>' with the relevant information.
 #### Prompt Answers
 
 -   SO session name (Recommended): int
--   SSO start URL [None]: https://pixie79.awsapps.com/start#
+<!-- trunk-ignore(markdown-link-check/0) -->
+-   SSO start URL [None]: <https://pixie79.awsapps.com/start#>
 -   SSO region [None]: eu-west-2
 -   SSO registration scopes [sso:account:access]: sso:account:access
 -   Select the role AWS Int Data Engineer with the account ID: XXXXXXXXX

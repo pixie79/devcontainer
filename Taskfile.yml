@@ -1,6 +1,6 @@
-version: "3"
+version: 3
 
-dotenv: [".env", "{{.ENV}}/.env.", "{{.HOME}}/.env"]
+dotenv: [.env, "{{.ENV}}/.env.", "{{.HOME}}/.env"]
 
 tasks:
     docker_login:
@@ -24,36 +24,36 @@ tasks:
             - terraform login projectolympus.jfrog.io
 
     tfinit_clean:
-        dir: "terraform"
+        dir: terraform
         cmds:
             - rm -rf .terraform
 
     tfinit:
-        dir: "terraform"
+        dir: terraform
         deps:
             - tfinit_clean
         cmds:
             - terraform init -backend=false
 
     tfvalidate:
-        dir: "terraform"
+        dir: terraform
         deps:
             - tfinit
         cmds:
             - terraform validate
 
     tflint:
-        dir: "terraform"
+        dir: terraform
         cmds:
             - tflint --recursive --color
 
     tflint_fix:
-        dir: "terraform"
+        dir: terraform
         cmds:
             - tflint --recursive --color --fix
 
     tfformat:
-        dir: "terraform"
+        dir: terraform
         cmds:
             - terraform fmt --recursive
 
@@ -73,13 +73,13 @@ tasks:
     tfinit_remote_int:
         deps:
             - tfinit_clean
-        dir: "terraform"
+        dir: terraform
         cmds:
             - terraform init -input=false -backend-config=./backend_config/int-data.tfvars
 
     tfinit_remote_e2e:
         deps:
             - tfinit_clean
-        dir: "terraform"
+        dir: terraform
         cmds:
             - terraform init -input=false -backend-config=./backend_config/e2e-data.tfvars

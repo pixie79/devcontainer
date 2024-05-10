@@ -1,0 +1,14 @@
+dbt-athena-community
+dbt-trino
+dbt-coverage
+dbt-duckdb
+numpy
+pandas
+scipy
+matplotlib
+seaborn
+scikit-learn
+torch
+plotly
+chdb
+datacontract-cli
