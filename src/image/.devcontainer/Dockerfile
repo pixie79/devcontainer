@@ -48,7 +48,7 @@ COPY zprofile /home/codespace/.zprofile
 
 
 RUN chmod +x /usr/local/bin/setup-devcontainer.sh /usr/local/bin/update-trunk-simlinks.sh
-RUN "$(date +%y-%m-%d)" > /usr/local/share/devcontainer_version && \
+RUN echo "$(date +%y-%m-%d)" > /usr/local/share/devcontainer_version && \
     mkdir -p  /home/codespace/.local/bin
 
 WORKDIR /home/codespace/.local/
