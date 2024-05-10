@@ -21,7 +21,7 @@ Please delete options that are not relevant.
         expected)
 -   [ ] This change requires a documentation update
 
-### Style Checklist:
+### Style Checklist
 
 -   [ ] My code follows the style guidelines of this project
 -   [ ] I have performed a self-review of my own code
@@ -29,7 +29,7 @@ Please delete options that are not relevant.
 -   [ ] I have made corresponding changes to the documentation
 -   [ ] Any dependent changes have been merged and published in downstream modules
 
-## Security:
+## Security
 
 -   [ ] This PR includes IAM trust policies which need manual review
 -   [ ] I confirm trust policies limit access appropriately

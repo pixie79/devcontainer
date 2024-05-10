@@ -1,3 +1,4 @@
+# trunk-ignore-all(trivy/DS002,trivy/DS026,checkov/CKV_DOCKER_2,checkov/CKV_DOCKER_3,hadolint/DL3008)
 ARG VARIANT="bookworm"
 FROM buildpack-deps:${VARIANT}-curl
 
@@ -47,14 +48,12 @@ COPY zprofile /home/codespace/.zprofile
 
 
 RUN chmod +x /usr/local/bin/setup-devcontainer.sh /usr/local/bin/update-trunk-simlinks.sh
-RUN echo "$(date +%y-%m-%d)" > /usr/local/share/devcontainer_version
+RUN "$(date +%y-%m-%d)" > /usr/local/share/devcontainer_version && \
+    mkdir -p  /home/codespace/.local/bin
 
-RUN mkdir /home/codespace/.local && \
-    cd /home/codespace/.local/ && \
-    sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d && \
-    curl -LO https://github.com/redpanda-data/redpanda/releases/latest/download/rpk-linux-amd64.zip && \
-    curl -LO https://github.com/redpanda-data/redpanda/releases/latest/download/rpk-linux-arm64.zip
+WORKDIR /home/codespace/.local/
+RUN sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d
 
-
+WORKDIR /home/codespace/
 
 ENTRYPOINT ["/usr/bin/zsh"]

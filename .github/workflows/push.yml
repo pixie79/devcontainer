@@ -1,60 +1,60 @@
 name: Build and push images
 
+permissions:
+    contents: read
+    packages: write
+
 on:
-  workflow_dispatch:
-  push:
-    branches:
-    - main
-  pull_request:
-    paths:
-      - src/image/**
-      - .github/devcontainer/smoke-devcontainer.yaml
-      - .github/actions/**
-      - build/**
+    push:
+        branches:
+            - main
+    pull_request:
+        paths:
+            - src/image/**
+            - .github/devcontainer/smoke-devcontainer.yaml
+            - .github/actions/**
+            - build/**
 
 jobs:
-  build-and-push:
-    name: Build and push images
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-    - name: Free more space
-      id: free_space
-      run: |
-        set -e
-        # Ensure enough space is available for build
-        sudo apt-get autoremove -y
-        sudo apt-get clean -y
+    build-and-push:
+        name: Build and push images
+        runs-on: ubuntu-latest
+        steps:
+            - name: Free more space
+              id: free_space
+              run: |
+                  set -e
+                  # Ensure enough space is available for build
+                  sudo apt-get autoremove -y
+                  sudo apt-get clean -y
 
-    - name: Checkout
-      id: checkout
-      uses: actions/checkout@v4
+            - name: Checkout
+              id: checkout
+              uses: actions/checkout@v4
 
-    - name: Log in to the Container registry
-      uses: docker/login-action@v3
-      with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+            - name: Log in to the Container registry
+              uses: docker/login-action@v3
+              with:
+                  registry: ghcr.io
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: fix docker
-      run: |
-        docker buildx create --use
-        
-    - name: Build and push
-      id: build_and_push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/devcontainer:latest
-      run: |
-        set -e
+            - name: fix docker
+              run: |
+                  docker buildx create --use
 
-        # Build and push images
-        yarn install
-        npm install -g @devcontainers/cli
-        docker buildx -h
-        pwd
-        ls -la
-        devcontainer build --workspace-folder src/image --push true --image-name $IMAGE_NAME --platform linux/amd64,linux/arm64
+            - name: Build and push
+              id: build_and_push
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/devcontainer:latest
+              run: |
+                  set -e
+
+                  # Build and push images
+                  yarn install
+                  npm install -g @devcontainers/cli
+                  docker buildx -h
+                  pwd
+                  ls -la
+                  devcontainer build --workspace-folder src/image --push true --image-name $IMAGE_NAME --platform linux/amd64,linux/arm64
