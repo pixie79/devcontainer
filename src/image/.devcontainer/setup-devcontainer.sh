@@ -61,6 +61,7 @@ case "${RPK,,}" in
     curl -L https://github.com/redpanda-data/redpanda/releases/latest/download/rpk-linux-"${ARCH}".zip -o rpk-linux.zip
     unzip rpk-linux.zip
     mv rpk ~/.local/bin
+    mv .rpk.* ~/.local/bin
     chmod +x ~/.local/bin/rpk
     rm rpk-linux.zip
     ;;
