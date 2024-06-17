@@ -58,9 +58,6 @@
         "ghcr.io/devcontainers-contrib/features/argo-cd:1": {},
         "ghcr.io/eitsupi/devcontainer-features/duckdb-cli:1": {},
         "ghcr.io/devcontainers/features/aws-cli:1": {},
-        "ghcr.io/astronomer/devcontainer-features/astro-cli:1": {
-            "version": "v1.23.0"
-        },
         "ghcr.io/trunk-io/devcontainer-feature/trunk": "latest"
     },
     "overrideFeatureInstallOrder": [
@@ -221,7 +218,8 @@
                 "RandomFractalsInc.tabular-data-viewer",
                 "trunk.io",
                 "wholroyd.jinja",
-                "tomaszbartoszewski.avro-tools"
+                "tomaszbartoszewski.avro-tools",
+                "georgeshaidar.vsc-benthos"
             ]
         }
     }
