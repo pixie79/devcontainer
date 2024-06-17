@@ -56,17 +56,11 @@ if [[ -f ${PWD}/pyproject.toml ]]; then
     poetry install
 fi
 
-case "${RPK,,}" in
-"true" | "t")
-    curl -L https://github.com/redpanda-data/redpanda/releases/latest/download/rpk-linux-"${ARCH}".zip -o rpk-linux.zip
-    unzip rpk-linux.zip
-    unzip rpk-linux.zip -d ~/.local/bin/
-    rm rpk-linux.zip
-    ;;
-*)
-    echo "Not installing Redpanda rpk as RPK is not set to TRUE"
-    ;;
-esac
+curl -L https://github.com/redpanda-data/redpanda/releases/latest/download/rpk-linux-"${ARCH}".zip -o rpk-linux.zip
+unzip rpk-linux.zip
+unzip rpk-linux.zip -d ~/.local/bin/
+rm rpk-linux.zip
+
 
 if [[ -d ${PWD}/terraform ]]; then
     curl -L https://github.com/minamijoyo/tfupdate/releases/download/v0.8.2/tfupdate_0.8.2_linux_"${ARCH}".tar.gz -o tfupdate.tar.gz
