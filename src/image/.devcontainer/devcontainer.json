@@ -205,6 +205,7 @@
                 "HashiCorp.terraform",
                 "innoverio.vscode-dbt-power-user",
                 "mark-tucker.aws-cli-configure",
+                "mechatroner.rainbow-csv",
                 "ms-azuretools.vscode-azureterraform",
                 "ms-azuretools.vscode-docker",
                 "ms-dotnettools.dotnet-interactive-vscode",
