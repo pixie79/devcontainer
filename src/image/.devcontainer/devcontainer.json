@@ -18,10 +18,7 @@
             "dotnetRuntimeVersions": "7.0",
             "aspNetCoreRuntimeVersions": "7.0"
         },
-        "ghcr.io/devcontainers/features/node:1": {
-            "version": "20",
-            "additionalVersions": "18"
-        },
+        "ghcr.io/devcontainers/features/node:1": {},
         "ghcr.io/devcontainers/features/java:1": {
             "version": "21",
             "additionalVersions": "17",
